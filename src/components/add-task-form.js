@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
-
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { v4 as uuidv4 } from "uuid";
-
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import Button from "@mui/material/Button";
-import { Stack } from "@mui/material";
+import Stack from "@mui/material/Stack";
 
 export default function AddTaskForm() {
   const { format } = require("date-fns");
@@ -24,7 +22,6 @@ export default function AddTaskForm() {
   useEffect(() => {
     const entriesLocalStorage = localStorage.getItem("entriesLocalStorage");
     const parsedEntriesLocalStorage = JSON.parse(entriesLocalStorage);
-
     if (parsedEntriesLocalStorage) {
       setEntries(parsedEntriesLocalStorage);
     }

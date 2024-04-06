@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { Divider, Stack } from "@mui/material";
+import Divider from "@mui/material/Divider";
+import Stack from "@mui/material/Stack";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -9,7 +10,6 @@ import Checkbox from "@mui/material/Checkbox";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -33,9 +33,8 @@ export default function SectionDisplay(props) {
   const [dateInput, setDateInput] = useState(null);
   const [formattedDate, setFormattedDate] = useState(null);
   const [entryToEditID, setEntryToEditID] = useState(null);
-
+  // open the dialog
   const [open, setOpen] = useState(false);
-
   //to check if the filters are active, hence altering display of display when there are zero tasks
   const [filterOn, setFilterOn] = useState(props.filter ? props.filter : false);
 
@@ -63,13 +62,9 @@ export default function SectionDisplay(props) {
         }
         return entry;
       });
-
-      const sortedEntryArray = updatedEntries.sort(
-        (a, b) => -(new Date(b.date) - new Date(a.date))
-      );
       localStorage.setItem(
         "entriesLocalStorage",
-        JSON.stringify(sortedEntryArray)
+        JSON.stringify(updatedEntries)
       );
     });
   };
@@ -122,7 +117,6 @@ export default function SectionDisplay(props) {
       const sortedEntryArray = updatedEntries.sort(
         (a, b) => -(new Date(b.date) - new Date(a.date))
       );
-      // set local storage here
       localStorage.setItem(
         "entriesLocalStorage",
         JSON.stringify(sortedEntryArray)
@@ -136,16 +130,11 @@ export default function SectionDisplay(props) {
       const updatedEntries = entries.filter(
         (entry) => entry.id !== entryToEditID
       );
-      const sortedEntryArray = updatedEntries.sort(
-        (a, b) => -(new Date(b.date) - new Date(a.date))
-      );
-      // set local storage here
       localStorage.setItem(
         "entriesLocalStorage",
-        JSON.stringify(sortedEntryArray)
+        JSON.stringify(updatedEntries)
       );
     });
-
     handleCloseEditForm();
   };
 

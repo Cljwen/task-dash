@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-
 import ListItemButton from "@mui/material/ListItemButton";
-import SearchBar from "./search-bar";
-import { ListItemText } from "@mui/material";
-import SectionDisplay from "./section-display";
+import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
+import SearchBar from "./search-bar";
+import SectionDisplay from "./section-display";
 
 export default function TaskDisplay() {
   const [entries, setEntries] = useState([]);

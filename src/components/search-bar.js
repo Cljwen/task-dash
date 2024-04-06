@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-
-import { Box, ListItem, TextField, Tooltip } from "@mui/material";
+import Box from "@mui/material/Box";
+import Chip from "@mui/material/Chip";
+import Stack from "@mui/material/Stack";
+import ListItem from "@mui/material/ListItem";
+import TextField from "@mui/material/TextField";
+import Tooltip from "@mui/material/Tooltip";
 import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
 import FilterListIcon from "@mui/icons-material/FilterList";
-import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-
 import { priorityColors } from "./constants";
 import SectionDisplay from "./section-display";
 
@@ -26,7 +27,7 @@ export default function SearchBar(props) {
   const [completedDisplay, setCompletedDisplay] = useState(false);
   const [pendingDisplay, setPendingDisplay] = useState(false);
 
-  // filter entries based on
+  //retrieve local storage
   useEffect(() => {
     const entriesLocalStorage = localStorage.getItem("entriesLocalStorage");
     const parsedEntriesLocalStorage = JSON.parse(entriesLocalStorage);
@@ -35,7 +36,9 @@ export default function SearchBar(props) {
     }
   }, [entries]);
 
+  // filter entries based on what chips are active
   useEffect(() => {
+    // array to be used to filter entries based on entry key and condition to look out for
     let array = [
       {
         name: "highPriorityDisplay",
@@ -69,12 +72,14 @@ export default function SearchBar(props) {
       },
     ];
 
+    // check which filters are active / true
     let trueFilters = array.filter((chip) => chip.addIntoResults === true);
 
+    // if at least one filter is true, filter all entries based on filter conditions listed within
     if (trueFilters.length !== 0) {
       let results = entries.filter((entry) => {
+        // usage of some here to implement OR condition instead of every (AND)
         return trueFilters.some((filterEntry) => {
-          // Use every to ensure all active filters pass
           if (filterEntry.filterKey === "priority") {
             return entry.priority === filterEntry.filterCondition;
           } else if (filterEntry.filterKey === "completed") {
