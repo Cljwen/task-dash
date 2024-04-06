@@ -9,6 +9,8 @@ import InputLabel from "@mui/material/InputLabel";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
+import "../App.css";
+
 export default function AddTaskForm() {
   const { format } = require("date-fns");
 
@@ -73,11 +75,13 @@ export default function AddTaskForm() {
   return (
     <div>
       <Stack spacing={3} sx={{ margin: "20px", minWidth: "100%" }}>
-        <h3>What needs doing?</h3>
+        <div className="Task-display-header">
+          <h2>What needs doing? Add a task here.</h2>
+        </div>
         <TextField
           required
           id="title"
-          label="Add Task"
+          label="Task name"
           variant="standard"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
