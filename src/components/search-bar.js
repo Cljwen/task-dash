@@ -9,7 +9,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import { priorityColors } from "./constants";
+import { priorityColors, retrieveLocalStorage } from "./constants";
 import SectionDisplay from "./section-display";
 
 export default function SearchBar(props) {
@@ -29,8 +29,7 @@ export default function SearchBar(props) {
 
   //retrieve local storage
   useEffect(() => {
-    const entriesLocalStorage = localStorage.getItem("entriesLocalStorage");
-    const parsedEntriesLocalStorage = JSON.parse(entriesLocalStorage);
+    const parsedEntriesLocalStorage = retrieveLocalStorage();
     if (parsedEntriesLocalStorage) {
       setEntries(parsedEntriesLocalStorage);
     }

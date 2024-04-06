@@ -20,7 +20,7 @@ import InputLabel from "@mui/material/InputLabel";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
-import { priorityColors } from "./constants";
+import { priorityColors, retrieveLocalStorage } from "./constants";
 import "../App.css";
 
 export default function SectionDisplay(props) {
@@ -39,8 +39,7 @@ export default function SectionDisplay(props) {
   const [filterOn, setFilterOn] = useState(props.filter ? props.filter : false);
 
   useEffect(() => {
-    const entriesLocalStorage = localStorage.getItem("entriesLocalStorage");
-    const parsedEntriesLocalStorage = JSON.parse(entriesLocalStorage);
+    const parsedEntriesLocalStorage = retrieveLocalStorage();
     if (parsedEntriesLocalStorage) {
       setEntries(parsedEntriesLocalStorage);
     }
@@ -154,64 +153,69 @@ export default function SectionDisplay(props) {
                         fullWidth
                       >
                         <DialogTitle>Edit Task</DialogTitle>
-                        <DialogContent>
-                          <Stack spacing={5}>
-                            <TextField
-                              autoFocus
-                              fullWidth
-                              required
-                              margin="dense"
-                              id="title"
-                              label="Task name"
-                              variant="standard"
-                              value={title}
-                              onChange={(e) => setTitle(e.target.value)}
-                            />
+                        <form onSubmit={handleSave}>
+                          <DialogContent>
+                            <Stack spacing={5}>
+                              <TextField
+                                autoFocus
+                                fullWidth
+                                required
+                                margin="dense"
+                                id="title"
+                                label="Task name"
+                                variant="standard"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                              />
 
-                            <TextField
-                              id="description"
-                              label="Description"
-                              placeholder="Add a little more details here"
-                              multiline
-                              value={description}
-                              onChange={(e) => setDescription(e.target.value)}
-                            />
+                              <TextField
+                                id="description"
+                                label="Description"
+                                placeholder="Add a little more details here"
+                                multiline
+                                required
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                              />
 
-                            <FormControl>
-                              <InputLabel id="priority">Priority</InputLabel>
-                              <Select
-                                id="priority"
-                                value={priority}
-                                label="Priority"
-                                onChange={(e) => setPriority(e.target.value)}
-                              >
-                                <MenuItem value={1}>High</MenuItem>
-                                <MenuItem value={2}>Medium</MenuItem>
-                                <MenuItem value={3}>Low</MenuItem>
-                              </Select>
-                            </FormControl>
-                            <DatePicker
-                              value={dateInput}
-                              onChange={handleDateChange}
-                            />
-                          </Stack>
-                        </DialogContent>
-                        <DialogActions>
-                          <Button
-                            onClick={handleDelete}
-                            sx={{ color: priorityColors[1] }}
-                          >
-                            Delete
-                          </Button>
-                          <Button onClick={handleCloseEditForm}>Cancel</Button>
-                          <Button
-                            variant="outlined"
-                            onClick={handleSave}
-                            sx={{ marginRight: "15px" }}
-                          >
-                            Save
-                          </Button>
-                        </DialogActions>
+                              <FormControl>
+                                <InputLabel id="priority">Priority</InputLabel>
+                                <Select
+                                  id="priority"
+                                  value={priority}
+                                  label="Priority"
+                                  onChange={(e) => setPriority(e.target.value)}
+                                >
+                                  <MenuItem value={1}>High</MenuItem>
+                                  <MenuItem value={2}>Medium</MenuItem>
+                                  <MenuItem value={3}>Low</MenuItem>
+                                </Select>
+                              </FormControl>
+                              <DatePicker
+                                value={dateInput}
+                                onChange={handleDateChange}
+                              />
+                            </Stack>
+                          </DialogContent>
+                          <DialogActions>
+                            <Button
+                              onClick={handleDelete}
+                              sx={{ color: priorityColors[1] }}
+                            >
+                              Delete
+                            </Button>
+                            <Button onClick={handleCloseEditForm}>
+                              Cancel
+                            </Button>
+                            <Button
+                              variant="outlined"
+                              type="submit"
+                              sx={{ marginRight: "15px" }}
+                            >
+                              Save
+                            </Button>
+                          </DialogActions>
+                        </form>
                       </Dialog>
                     </div>
                   }
