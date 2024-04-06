@@ -162,7 +162,7 @@ export default function SectionDisplay(props) {
                               required
                               margin="dense"
                               id="title"
-                              label="Add Task"
+                              label="Task name"
                               variant="standard"
                               value={title}
                               onChange={(e) => setTitle(e.target.value)}
@@ -186,7 +186,7 @@ export default function SectionDisplay(props) {
                                 onChange={(e) => setPriority(e.target.value)}
                               >
                                 <MenuItem value={1}>High</MenuItem>
-                                <MenuItem value={2}>Mid</MenuItem>
+                                <MenuItem value={2}>Medium</MenuItem>
                                 <MenuItem value={3}>Low</MenuItem>
                               </Select>
                             </FormControl>
