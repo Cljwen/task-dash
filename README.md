@@ -4,6 +4,8 @@
 
 Users can view tasks that are organized into Overdue, Upcoming and Completed sections. Tasks can be added, edited and deleted using local storage. Priority is shown via the color-coded checkboxes: red for high, orange for medium, and green for low. Tasks are automatically sorted by date, ensuring easy tracking. The responsive layout works for multiple viewing screen sizes too.
 
+![Screenshot 2024-04-06 at 12 51 05 PM](https://github.com/Cljwen/task-dash/assets/101965420/a4d31654-c067-4799-9af5-49313603551e)
+
 ### Assumptions
 
 - web application
