@@ -60,7 +60,6 @@ export default function AddTaskForm() {
       const sortedEntryArray = updatedEntries.sort(
         (a, b) => -(new Date(b.date) - new Date(a.date))
       );
-      // set local storage here
       localStorage.setItem(
         "entriesLocalStorage",
         JSON.stringify(sortedEntryArray)
@@ -81,8 +80,8 @@ export default function AddTaskForm() {
 
   return (
     <div>
-      <Stack spacing={2} sx={{ margin: "20px", minWidth: "100%" }}>
-        <p>What needs doing?</p>
+      <Stack spacing={3} sx={{ margin: "20px", minWidth: "100%" }}>
+        <h3>What needs doing?</h3>
         <TextField
           required
           id="title"
@@ -91,21 +90,17 @@ export default function AddTaskForm() {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <br />
-        <FormControl fullWidth>
-          <TextField
-            required
-            fullWidth
-            id="description"
-            label="Description"
-            placeholder="Add a little more details here"
-            multiline
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </FormControl>
 
-        <br />
+        <TextField
+          required
+          id="description"
+          label="Description"
+          placeholder="Add a little more details here"
+          multiline
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+
         <FormControl>
           <InputLabel id="priority">Priority</InputLabel>
           <Select
@@ -116,11 +111,16 @@ export default function AddTaskForm() {
             onChange={handlePriorityChange}
           >
             <MenuItem value={1}>High</MenuItem>
-            <MenuItem value={2}>Mid</MenuItem>
+            <MenuItem value={2}>Medium</MenuItem>
             <MenuItem value={3}>Low</MenuItem>
           </Select>
         </FormControl>
-        <DatePicker value={dateInput} onChange={handleDateChange} required />
+        <DatePicker
+          value={dateInput}
+          onChange={handleDateChange}
+          required
+          label="Due Date"
+        />
         <Button variant="text" type="submit" onClick={handleSubmit}>
           Add
         </Button>

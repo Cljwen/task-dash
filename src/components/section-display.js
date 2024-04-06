@@ -1,14 +1,11 @@
 import { useState, useEffect } from "react";
-
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { Divider, Stack } from "@mui/material";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
-import IconButton from "@mui/material/IconButton";
-import EditIcon from "@mui/icons-material/Edit";
-
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -20,11 +17,10 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { Divider, Stack } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import EditIcon from "@mui/icons-material/Edit";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import { priorityColors } from "./constants";
-
 import "../App.css";
 
 export default function SectionDisplay(props) {
@@ -35,11 +31,12 @@ export default function SectionDisplay(props) {
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState(2);
   const [dateInput, setDateInput] = useState(null);
-
   const [formattedDate, setFormattedDate] = useState(null);
   const [entryToEditID, setEntryToEditID] = useState(null);
 
   const [open, setOpen] = useState(false);
+
+  //to check if the filters are active, hence altering display of display when there are zero tasks
   const [filterOn, setFilterOn] = useState(props.filter ? props.filter : false);
 
   useEffect(() => {
@@ -271,7 +268,7 @@ export default function SectionDisplay(props) {
         ) : filterOn ? null : (
           <div className="Zero-tasks-display">
             <WorkOutlineIcon sx={{ color: "#31363F", paddingRight: "5px" }} />
-            Hmm. You dont have any tasks in this section.
+            Hmm. You don't have any tasks in this section.
           </div>
         )}
       </List>

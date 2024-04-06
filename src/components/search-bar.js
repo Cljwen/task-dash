@@ -1,13 +1,16 @@
-import { Box, ListItem, TextField, Tooltip } from "@mui/material";
 import { useState, useEffect } from "react";
-import SectionDisplay from "./section-display";
+
+import { Box, ListItem, TextField, Tooltip } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
-import { priorityColors } from "./constants";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+
+import { priorityColors } from "./constants";
+import SectionDisplay from "./section-display";
+
 export default function SearchBar(props) {
   const [entries, setEntries] = useState([]);
   const [inputValue, setinputValue] = useState("");
@@ -16,14 +19,14 @@ export default function SearchBar(props) {
   const [showFilters, setShowFilters] = useState(false);
   const [filteredResults, setFilteredResults] = useState([]);
 
-  //to alter chip statuses
+  // states to alter chip filtering
   const [highPriorityDisplay, setHighPriorityDisplay] = useState(false);
   const [mediumPriorityDisplay, setMediumPriorityDisplay] = useState(false);
   const [lowPriorityDisplay, setLowPriorityDisplay] = useState(false);
-
   const [completedDisplay, setCompletedDisplay] = useState(false);
   const [pendingDisplay, setPendingDisplay] = useState(false);
 
+  // filter entries based on
   useEffect(() => {
     const entriesLocalStorage = localStorage.getItem("entriesLocalStorage");
     const parsedEntriesLocalStorage = JSON.parse(entriesLocalStorage);
