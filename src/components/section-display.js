@@ -83,11 +83,6 @@ export default function SectionDisplay(props) {
     setOpen(false);
   };
 
-  const handlePriorityChange = (e) => {
-    const priority = e.target.value;
-    setPriority(priority);
-  };
-
   const handleDateChange = (e) => {
     var formattedDateInput = format(new Date(e), "dd/MM/yyyy", {
       timeZone: "Asia/Singapore",
@@ -188,7 +183,7 @@ export default function SectionDisplay(props) {
                                 id="priority"
                                 value={priority}
                                 label="Priority"
-                                onChange={handlePriorityChange}
+                                onChange={(e) => setPriority(e.target.value)}
                               >
                                 <MenuItem value={1}>High</MenuItem>
                                 <MenuItem value={2}>Mid</MenuItem>
