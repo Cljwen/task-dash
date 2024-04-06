@@ -1,12 +1,26 @@
-# Getting Started with Create React App
+## Task Dash
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Overview
+
+Users can view tasks that are organized into Overdue, Upcoming and Completed sections. Tasks can be added, edited and deleted using local storage. Priority is shown via the color-coded checkboxes: red for high, orange for medium, and green for low. Tasks are automatically sorted by date, ensuring easy tracking. The responsive layout works for multiple viewing screen sizes too.
+
+### Assumptions
+
+- web application
+- Component libraries are allowed (Material UI)
+- Straightforward application - all functions on the same page, white background is used with priority colors as the main focus
+
+### Setting up and running the application
+
+1. Clone the repository on IDE:
+   Copy HTTPS clone link from GitHub and enter Git Clone (link) on coommand line interface
+2. Enter npm start
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### To start the `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -38,6 +52,10 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Licenses
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Learn More
 
